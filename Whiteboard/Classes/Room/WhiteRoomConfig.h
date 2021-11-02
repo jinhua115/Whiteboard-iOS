@@ -57,6 +57,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *roomToken;
 /** 用户标识记录，*/
 @property (nonatomic, copy, readonly) NSString *uid;
+
+@property (nonatomic, assign) BOOL fpa API_AVAILABLE(ios(13.0));
 /** 
  待回放的互动白板房间所在的数据中心。
 
