@@ -12,6 +12,8 @@
 #import "WhiteRoom+Private.h"
 #import "WhiteRoomCallbacks+Private.h"
 #import "WhiteRoom.h"
+#import "WhiteSocket.h"
+#import "WhiteSocket+Private.h"
 
 @implementation WhiteSDK (Room)
 
@@ -26,7 +28,13 @@
         WhiteRoomCallbacks *roomCallbacks = [[WhiteRoomCallbacks alloc] init];
         self.bridge.roomCallbacks = roomCallbacks;
         [self.bridge addJavascriptObject:roomCallbacks namespace:@"room"];
+
+        if (@available(iOS 13, *)) {
+            WhiteSocket *socket = [[WhiteSocket alloc] init];
+            [self.bridge addJavascriptObject:socket namespace:@"ws"];
+        }
     }
+
     
     if (callbacks) {
         self.bridge.roomCallbacks.delegate = callbacks;
