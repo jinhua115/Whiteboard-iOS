@@ -19,6 +19,7 @@
 #import <Masonry/Masonry.h>
 #import "RoomCommandListController.h"
 #import "WhiteUtils.h"
+#import "WhiteFPA.h"
 
 @implementation WhiteRoomViewController
 
@@ -39,6 +40,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor orangeColor];
+    
+    if (@available(iOS 13, *)) {
+        [WhiteFPA setupFPA:[WhiteFPA defaultFPAConfig]];
+    }
 
     if ([self.roomUuid length] > 0) {
         [self joinExistRoom];
@@ -165,6 +170,7 @@
         WhiteCameraBound *bound = [WhiteCameraBound defaultMinContentModeScale:0 maxContentModeScale:10];
         roomConfig.cameraBound = bound;
         roomConfig.region = WhiteRegionCN;
+        roomConfig.fpa = YES;
         self.roomConfig = roomConfig;
     }
 
