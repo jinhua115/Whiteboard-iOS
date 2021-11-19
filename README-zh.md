@@ -147,6 +147,7 @@ sdk 现在支持使用 CombinePlayer，在 Native 端播放音视频，sdk 会�
 - (void)initPlayer
 {
 
+    
     // 创建 WhitePlayer逻辑
     // 1. 配置 SDK 初始化参数，更多参数，可见 WhiteSdkConfiguration 头文件
     WhiteSdkConfiguration *config = [[WhiteSdkConfiguration alloc] initWithApp:[WhiteUtils appIdentifier]];
